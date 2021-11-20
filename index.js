@@ -1,12 +1,11 @@
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
+addEventListener("fetch", event => {
+   
+  const url =new URL(event.request.url)
+
+  url.hostname='pradeepkumar.tk'
+
+  const data=fetch(url.toString(),event.request)
+
+  event.respondWith(data)
+
 })
-/**
- * Respond with hello worker text
- * @param {Request} request
- */
-async function handleRequest(request) {
-  return new Response('Hello worker!', {
-    headers: { 'content-type': 'text/plain' },
-  })
-}
